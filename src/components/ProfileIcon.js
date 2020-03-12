@@ -1,6 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+
+ProfileIcon.propTypes = {
+  menuId: PropTypes.string,
+  handleProfileMenuOpen: PropTypes.func
+};
 
 export default function ProfileIcon(props) {
   return (
