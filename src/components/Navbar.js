@@ -10,15 +10,16 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Badge from "@material-ui/core/Badge";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
 
-
 import DrawerLeftMenu from "./DrawerLeftMenu";
+import SearchInput from "./SearchInput";
+import ProfileIcon from "./ProfileIcon";
+import MailNotification from "./MailNotification";
+import BellNotification from "./BellNotification";
 
 const drawerWidth = 240;
 
@@ -256,48 +257,20 @@ export default function Navbar() {
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{
-                "aria-label": "search"
-              }}
-            />
-          </div>
+          <SearchInput />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <MailNotification />
+            <BellNotification />
+            <ProfileIcon
+              handleProfileMenuOpen={handleProfileMenuOpen}
+              menuId={menuId}
+            />
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -314,9 +287,7 @@ export default function Navbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <DrawerLeftMenu
-        open={open}
-        handleDrawerClose={handleDrawerClose} />
+      <DrawerLeftMenu open={open} handleDrawerClose={handleDrawerClose} />
     </div>
   );
 }
