@@ -1,17 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  //   CartesianGrid,
-  Tooltip
-} from "recharts";
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   lineChartStyle: {
     backgroundColor: "#0e1726"
+  },
+  fontColor: {
+    color: "#e0e6ed"
   }
 });
 
@@ -34,35 +33,45 @@ export default function RevenueChart() {
   const classes = useStyles();
 
   return (
-    <div className={classes.lineChartStyle}>
-      <AreaChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0
-        }}
-      >
-        <XAxis dataKey="name" stroke="#e0e6ed" />
-        <YAxis stroke="#e0e6ed" />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          stroke="rgb(27, 85, 226)"
-          fill="rgb(27, 85, 226,.2)"
-        />
-        <Area
-          type="monotone"
-          dataKey="pv"
-          stackId="1"
-          stroke="rgb(231, 81, 90)"
-          fill="rgb(231, 81, 90,.2)"
-        />
-      </AreaChart>
-    </div>
+    <Card className={classes.lineChartStyle}>
+      <CardContent>
+        <Typography
+          className={classes.fontColor}
+          color="inherit"
+          variant="h5"
+          gutterBottom
+        >
+          Revenue
+        </Typography>
+        <AreaChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0
+          }}
+        >
+          <XAxis dataKey="name" stroke="#e0e6ed" />
+          <YAxis stroke="#e0e6ed" />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            stroke="rgb(27, 85, 226)"
+            fill="rgb(27, 85, 226,.2)"
+          />
+          <Area
+            type="monotone"
+            dataKey="pv"
+            stackId="1"
+            stroke="rgb(231, 81, 90)"
+            fill="rgb(231, 81, 90,.2)"
+          />
+        </AreaChart>
+      </CardContent>
+    </Card>
   );
 }

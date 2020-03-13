@@ -114,6 +114,7 @@ export default function Navbar() {
         <Toolbar>
           <IconButton
             color="inherit"
+            style={{ color: "#e0e6ed" }}  
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
