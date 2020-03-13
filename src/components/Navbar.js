@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
-    }
+    },
+    color: "#e0e6ed"
   },
   sectionDesktop: {
     display: "none",
@@ -68,19 +69,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
   const menuId = "primary-search-account-menu";
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const mobileMenuId = "primary-search-account-menu-mobile";
   const isMenuOpen = Boolean(anchorEl);
-  
+
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setIsDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setIsDrawerOpen(false);
   };
 
   const handleProfileMenuOpen = event => {
@@ -100,14 +101,14 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
-
   return (
-    <div className={classes.root}>
+    <>
       <CssBaseline />
       <AppBar
+        color="transparent"
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
+          [classes.appBarShift]: isDrawerOpen
         })}
       >
         <Toolbar>
@@ -116,7 +117,7 @@ export default function Navbar() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, isDrawerOpen && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -146,18 +147,24 @@ export default function Navbar() {
           </div>
         </Toolbar>
       </AppBar>
+
       <ProfilIconPopupMobileMenu
         mobileMoreAnchorEl={mobileMoreAnchorEl}
         mobileMenuId={mobileMenuId}
         handleProfileMenuOpen={handleProfileMenuOpen}
       />
+
       <ProfilIconPopupMenu
         isMenuOpen={isMenuOpen}
         handleMenuClose={handleMenuClose}
         anchorEl={anchorEl}
         menuId={menuId}
       />
-      <DrawerLeftMenu open={open} handleDrawerClose={handleDrawerClose} />
-    </div>
+
+      <DrawerLeftMenu
+        isDrawerOpen={isDrawerOpen}
+        handleDrawerClose={handleDrawerClose}
+      />
+    </>
   );
 }

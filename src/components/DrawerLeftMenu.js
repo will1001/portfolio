@@ -16,12 +16,25 @@ import MailIcon from "@material-ui/icons/Mail";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    // backgroundColor: "#0e1726"
+  },
+  iconColor: {
+    color: "#e0e6ed"
+  },
+  fontColor: {
+    color: "#e0e6ed"
+  },
+  dividerColor: {
+    backgroundColor: "#e0e6ed"
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    backgroundColor: "#0e1726"
   },
   drawerHeader: {
     display: "flex",
@@ -33,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 DrawerLeftMenu.propTypes = {
-  open: PropTypes.bool,
+  isDrawerOpen: PropTypes.bool,
   handleDrawerClose: PropTypes.func
 };
 
@@ -41,19 +54,33 @@ export default function DrawerLeftMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const ListMenu = [
+    {
+      title: "Inbox",
+      icon: <InboxIcon />
+    },
+    {
+      title: "Send email",
+      icon: <MailIcon />
+    }
+  ];
+
   return (
-    <>
+    <div className={classes.root}>
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={props.open}
+        open={props.isDrawerOpen}
         classes={{
           paper: classes.drawerPaper
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={props.handleDrawerClose}>
+          <IconButton
+            onClick={props.handleDrawerClose}
+            className={classes.iconColor}
+          >
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
@@ -61,29 +88,21 @@ export default function DrawerLeftMenu(props) {
             )}
           </IconButton>
         </div>
-        <Divider />
+        <Divider className={classes.dividerColor} />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+          {ListMenu.map(list => (
+            <ListItem button key={list.title}>
+              <ListItemIcon className={classes.iconColor}>
+                {list.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText
+                className={classes.fontColor}
+                primary={list.title}
+              />
             </ListItem>
           ))}
         </List>
       </Drawer>
-    </>
+    </div>
   );
 }

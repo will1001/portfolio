@@ -47,9 +47,10 @@ export default function SearchInput() {
   return (
     <div className={classes.search}>
       <div className={classes.searchIcon}>
-        <SearchIcon />
+        <SearchIcon style={{ color: "#e0e6ed" }} />
       </div>
       <InputBase
+        style={{ color: "#e0e6ed" }}
         placeholder="Search…"
         classes={{
           root: classes.inputRoot,

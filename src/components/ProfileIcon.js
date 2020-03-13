@@ -17,7 +17,8 @@ export default function ProfileIcon(props) {
         aria-controls={props.menuId}
         aria-haspopup="true"
         onClick={props.handleProfileMenuOpen}
-        color="inherit"
+        color="secondary"
+        style={{ color: "#e0e6ed" }}
       >
         <AccountCircle />
       </IconButton>
