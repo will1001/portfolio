@@ -2,11 +2,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
 import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
-  lineChartStyle: {
+  card: {
     backgroundColor: "#0e1726"
   },
   fontColor: {
@@ -33,16 +34,9 @@ export default function RevenueChart() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.lineChartStyle}>
+    <Card className={classes.card}>
+      <CardHeader className={classes.fontColor} title="Revenue"></CardHeader>
       <CardContent>
-        <Typography
-          className={classes.fontColor}
-          color="inherit"
-          variant="h5"
-          gutterBottom
-        >
-          Revenue
-        </Typography>
         <AreaChart
           width={500}
           height={300}

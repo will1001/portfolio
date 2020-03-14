@@ -7,11 +7,12 @@ import {
   Legend
 } from "recharts";
 import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
-  lineChartStyle: {
+  card: {
     backgroundColor: "#0e1726"
   },
   fontColor: {
@@ -33,11 +34,12 @@ export default function DailySalesChart() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.lineChartStyle}>
+    <Card className={classes.card}>
+      <CardHeader
+        className={classes.fontColor}
+        title="Daily sales"
+      ></CardHeader>
       <CardContent>
-        <Typography className={classes.fontColor} variant="h5" gutterBottom>
-          Daily Sales
-        </Typography>
         <BarChart
           width={500}
           height={300}
@@ -50,7 +52,7 @@ export default function DailySalesChart() {
           }}
         >
           <Tooltip />
-          <Legend wrapperStyle={{ color:"#ffffff" ,margin:8}} />
+          <Legend wrapperStyle={{ color: "#ffffff", margin: "-11px 0px" }} />
           <Bar dataKey="Last Week" stackId="a" fill="#8884d8" />
           <Bar dataKey="Sales" stackId="a" fill="#82ca9d" />
         </BarChart>

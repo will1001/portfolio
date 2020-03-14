@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "./components/Navbar";
 import RevenueChart from "./components/RevenueChart";
 import DailySalesChart from "./components/DailySalesChart";
+import AccountInfo from "./components/AccountInfo";
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +25,10 @@ function App() {
         <Navbar />
         <div className={classes.bodyContent}>
           <RevenueChart />
+          <br />
           <DailySalesChart />
+          <br />
+          <AccountInfo />
         </div>
       </div>
     </>
