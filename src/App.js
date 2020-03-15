@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import RevenueChart from "./components/RevenueChart";
 import DailySalesChart from "./components/DailySalesChart";
 import AccountInfo from "./components/AccountInfo";
+import RecentOrders from "./components/RecentOrders";
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +30,8 @@ function App() {
           <DailySalesChart />
           <br />
           <AccountInfo />
+          <br />
+          <RecentOrders />
         </div>
       </div>
     </>

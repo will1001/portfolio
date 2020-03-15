@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
@@ -55,7 +55,6 @@ export default function AccountInfo() {
           style={{
             borderTop: "1px dashed #e0e6ed"
           }}
-          light="true"
         />
 
         {listBalance.map(list => (
@@ -72,7 +71,6 @@ export default function AccountInfo() {
           style={{
             borderTop: "1px dashed #e0e6ed"
           }}
-          light="true"
         />
       </CardContent>
       <CardActions disableSpacing style={{ display: "flex", justifyContent: "space-around",textAlign:'center' }}>
