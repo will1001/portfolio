@@ -1,4 +1,7 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store"
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "./components/Navbar";
@@ -21,20 +24,32 @@ function App() {
   const classes = useStyles();
 
   return (
-    <>
-      <div className={classes.root}>
-        <Navbar />
-        <div className={classes.bodyContent}>
-          <RevenueChart />
-          <br />
-          <DailySalesChart />
-          <br />
-          <AccountInfo />
-          <br />
-          <RecentOrders />
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className={classes.root}>
+          <Navbar />
+          <div className={classes.bodyContent}>
+            <Switch>
+              <Route path="/Chat">
+                <h1>Chat</h1>
+              </Route>
+              <Route path="/Notes">
+                <h1>Notes</h1>
+              </Route>
+              <Route path="/">
+                <RevenueChart />
+                <br />
+                <DailySalesChart />
+                <br />
+                <AccountInfo />
+                <br />
+                <RecentOrders />
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </div>
-    </>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

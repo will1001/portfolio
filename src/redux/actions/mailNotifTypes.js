@@ -1,0 +1,1 @@
+export const ADD_MAIL_NOTIF = "ADD_MAIL_NOTIF";
