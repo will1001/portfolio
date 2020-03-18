@@ -1,4 +1,4 @@
-import { ADD_BELL_NOTIF } from "./bellNotifTypes";
+import { ADD_BELL_NOTIF } from "./actionTypes";
 
 export const addBellNotif = () => {
   return {

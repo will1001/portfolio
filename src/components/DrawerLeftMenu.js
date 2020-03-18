@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -14,14 +15,9 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 import IconButton from "@material-ui/core/IconButton";
-import ExtensionIcon from "@material-ui/icons/Extension";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import StorageIcon from "@material-ui/icons/Storage";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-import AppsIcon from "@material-ui/icons/Apps";
 
 const drawerWidth = 240;
 
@@ -68,103 +64,7 @@ DrawerLeftMenu.propTypes = {
 export default function DrawerLeftMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const ListMenu = [
-    {
-      idKey: 0,
-      title: "Dashboard",
-      icon: <DashboardIcon />,
-      subMenuIsOpen: false,
-      subMenu: []
-    },
-    {
-      idKey: 1,
-      title: "Apps",
-      icon: <AppsIcon />,
-      subMenuIsOpen: false,
-      subMenu: [
-        {
-          idKey: 0,
-          title: "Todo List"
-        },
-        {
-          idKey: 1,
-          title: "Scrumboard"
-        },
-        {
-          idKey: 2,
-          title: "Chat"
-        },
-        {
-          idKey: 3,
-          title: "Calendar"
-        },
-        {
-          idKey: 4,
-          title: "Notes"
-        }
-      ]
-    },
-    {
-      idKey: 2,
-      title: "Components",
-      icon: <ExtensionIcon />,
-      subMenuIsOpen: false,
-      subMenu: [
-        {
-          idKey: 0,
-          title: "abcde"
-        },
-        {
-          idKey: 1,
-          title: "abcde 2"
-        },
-        {
-          idKey: 2,
-          title: "abcde 3"
-        }
-      ]
-    },
-    {
-      idKey: 3,
-      title: "Data Tables",
-      icon: <StorageIcon />,
-      subMenuIsOpen: false,
-      subMenu: [
-        {
-          idKey: 0,
-          title: "abcde"
-        },
-        {
-          idKey: 1,
-          title: "abcde 2"
-        },
-        {
-          idKey: 2,
-          title: "abcde 3"
-        }
-      ]
-    },
-    {
-      idKey: 4,
-      title: "Forms",
-      icon: <AssignmentIcon />,
-      subMenuIsOpen: false,
-      subMenu: [
-        {
-          idKey: 0,
-          title: "abcde"
-        },
-        {
-          idKey: 1,
-          title: "abcde 2"
-        },
-        {
-          idKey: 2,
-          title: "abcde 3"
-        }
-      ]
-    }
-  ];
+  const ListMenu = useSelector(state => state.drawerListMenu.listMenu);
 
   const [open, setOpen] = React.useState(ListMenu);
 
@@ -208,7 +108,10 @@ export default function DrawerLeftMenu(props) {
           {ListMenu.map(list =>
             list.subMenu.length === 0 ? (
               <div key={list.idKey}>
-                <Link to="/">
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={list.title === "Dashboard" ? "/" : list.routerLink}
+                >
                   <ListItem button>
                     <ListItemIcon className={classes.iconColor}>
                       {list.icon}
@@ -251,7 +154,7 @@ export default function DrawerLeftMenu(props) {
                       <Link
                         key={subList.idKey}
                         style={{ textDecoration: "none" }}
-                        to={"/" + subList.title}
+                        to={subList.routerLink}
                       >
                         <ListItem button className={classes.subMenu}>
                           <ListItemIcon className={classes.iconColor}>

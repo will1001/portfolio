@@ -4,7 +4,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import { useSelector, useDispatch } from "react-redux";
-import { addBellNotif } from "../redux/actions/bellNotifAction";
+import { addBellNotif } from "../redux/actions/BellNotifAction";
 
 BellNotification.propTypes = {
   addBellNotif: PropTypes.func,

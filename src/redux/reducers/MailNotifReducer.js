@@ -1,4 +1,4 @@
-import { ADD_MAIL_NOTIF } from "../actions/mailNotifTypes";
+import { ADD_MAIL_NOTIF } from "../actions/actionTypes";
 
 const initialState = {
   mailNotif: 1

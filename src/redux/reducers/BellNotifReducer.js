@@ -1,4 +1,4 @@
-import { ADD_BELL_NOTIF } from "../actions/bellNotifTypes";
+import { ADD_BELL_NOTIF } from "../actions/actionTypes";
 
 const initialState = {
   bellNotif: 1

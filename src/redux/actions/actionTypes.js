@@ -1,0 +1,3 @@
+export const ADD_BELL_NOTIF = "ADD_BELL_NOTIF";
+export const ADD_MAIL_NOTIF = "ADD_MAIL_NOTIF";
+export const SHOW_DRAWER_LIST_MENU = "SHOW_DRAWER_LIST_MENU";

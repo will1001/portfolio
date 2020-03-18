@@ -1,1 +1,0 @@
-export const ADD_BELL_NOTIF = "ADD_BELL_NOTIF";

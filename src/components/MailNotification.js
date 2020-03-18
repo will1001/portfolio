@@ -3,7 +3,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import { useSelector, useDispatch } from "react-redux";
-import { addMailNotif } from "../redux/actions/mailNotifAction";
+import { addMailNotif } from "../redux/actions/MailNotifAction";
 
 export default function MailNotification() {
    const mailNotif = useSelector(state => state.mail.mailNotif);
